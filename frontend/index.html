@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Showcase CRUD</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 0 20px; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; background: #f9f9f9; padding: 15px; border-radius: 8px;}
+    form input, form textarea, form button { padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    form textarea, form button { grid-column: span 2; }
+    form button { background-color: #007bff; color: white; cursor: pointer; border: none; font-weight: bold;}
+    form button:hover { background-color: #0056b3; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px;}
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background: #007bff; color: white; }
+    tr:nth-child(even) { background: #f2f2f2; }
+    .actions button { margin-right: 5px; padding: 5px 10px; cursor: pointer; border: none; border-radius: 3px;}
+    .edit-btn { background-color: #ffc107; color: black; }
+    .delete-btn { background-color: #dc3545; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Tech Product Showcase</h1>
+  
+  <form id="productForm">
+    <input type="hidden" id="productId" />
+    <input id="product_name" placeholder="Product Name" required />
+    <input id="brand" placeholder="Brand" required />
+    <input id="category" placeholder="Category" required />
+    <input id="price" type="number" step="0.01" placeholder="Price" required />
+    <input id="stock_quantity" type="number" placeholder="Stock Quantity" />
+    <textarea id="description" placeholder="Description"></textarea>
+    <button type="submit" id="submitBtn">Create Product</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Brand</th><th>Category</th>
+        <th>Price</th><th>Stock</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="productTable">
+      <!-- Data will load here -->
+    </tbody>
+  </table>
+
+  <script src="app.js"></script>
+</body>
+</html>
