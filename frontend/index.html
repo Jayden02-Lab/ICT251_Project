@@ -4,19 +4,135 @@
   <meta charset="UTF-8" />
   <title>Product Showcase CRUD</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 0 20px; }
-    form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; background: #f9f9f9; padding: 15px; border-radius: 8px;}
-    form input, form textarea, form button { padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-    form textarea, form button { grid-column: span 2; }
-    form button { background-color: #007bff; color: white; cursor: pointer; border: none; font-weight: bold;}
-    form button:hover { background-color: #0056b3; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px;}
-    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-    th { background: #007bff; color: white; }
-    tr:nth-child(even) { background: #f2f2f2; }
-    .actions button { margin-right: 5px; padding: 5px 10px; cursor: pointer; border: none; border-radius: 3px;}
-    .edit-btn { background-color: #ffc107; color: black; }
-    .delete-btn { background-color: #dc3545; color: white; }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    color: #333;
+    margin: 0;
+    padding: 20px 10px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  h1 {
+    color: #1a252f;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8rem; /* Smaller title */
+    text-align: center;
+  }
+
+  /* Tighter form container */
+  form {
+    background: #ffffff;
+    padding: 20px; /* Reduced from 30px */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 650px; /* Narrower */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px; /* Tighter gap */
+    margin-bottom: 25px;
+  }
+
+  textarea, button[type="submit"] {
+    grid-column: span 2; 
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 10px 12px; /* Smaller inputs */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+  }
+
+  input:focus, textarea:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+
+  button[type="submit"] {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 10px; /* Thinner button */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+
+  button[type="submit"]:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Smaller Table */
+  table {
+    width: 100%;
+    max-width: 650px;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-size: 14px; /* Smaller text in table */
+  }
+
+  th, td {
+    padding: 10px 15px; /* Tighter cell padding */
+    text-align: left;
+    border-bottom: 1px solid #e1e8ed;
+  }
+
+  th {
+    background-color: #1a252f;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+
+  tr:hover {
+    background-color: #eef2f7;
+  }
+
+  td button {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  td button:hover {
+    background-color: #ff2a3a;
+  }
+</style>
+  
+</style>
   </style>
 </head>
 <body>
